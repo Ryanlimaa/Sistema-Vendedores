@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using SistemaVendedoresWebMcv.Data;
 namespace SistemaVendedoresWebMcv
 {
     public class Program
@@ -5,6 +8,8 @@ namespace SistemaVendedoresWebMcv
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<SistemaVendedoresWebMcvContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("SistemaVendedoresWebMcvContext") ?? throw new InvalidOperationException("Connection string 'SistemaVendedoresWebMcvContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
