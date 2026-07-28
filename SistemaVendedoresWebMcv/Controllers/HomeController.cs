@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using SistemaVendedoresWebMcv.Models;
+using SistemaVendedoresWebMcv.Models.ViewModels;
 
 namespace SistemaVendedoresWebMcv.Controllers
 {
@@ -15,6 +15,8 @@ namespace SistemaVendedoresWebMcv.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Mensagen"] = "Bem vindo ao Sistema de Vendedores!";
+            ViewData["Nome"] = "Ryan Lima";
             return View();
         }
 

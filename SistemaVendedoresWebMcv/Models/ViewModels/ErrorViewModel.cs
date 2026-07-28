@@ -1,4 +1,4 @@
-namespace SistemaVendedoresWebMcv.Models
+namespace SistemaVendedoresWebMcv.Models.ViewModels
 {
     public class ErrorViewModel
     {
