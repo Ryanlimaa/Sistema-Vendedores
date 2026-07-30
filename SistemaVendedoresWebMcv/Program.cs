@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaVendedoresWebMcv.Data;
+using SistemaVendedoresWebMcv.Services;
 namespace SistemaVendedoresWebMcv
 {
     public class Program
@@ -13,6 +14,7 @@ namespace SistemaVendedoresWebMcv
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<VendedorService>();
 
             var app = builder.Build();
 
