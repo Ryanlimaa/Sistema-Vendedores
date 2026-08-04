@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SistemaVendedoresWebMcv.Models;
 using SistemaVendedoresWebMcv.Services;
 
 namespace SistemaVendedoresWebMcv.Controllers
@@ -20,6 +21,14 @@ namespace SistemaVendedoresWebMcv.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Vendedor vendedor)
+        {
+            _vendedorservice.Insert(vendedor);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
