@@ -16,5 +16,10 @@ namespace SistemaVendedoresWebMcv.Controllers
             var list = _vendedorservice.FindAll();
             return View(list);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
