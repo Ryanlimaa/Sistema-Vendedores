@@ -14,12 +14,11 @@ namespace SistemaVendedoresWebMcv.Services
 
         public List<Vendedor> FindAll()
         {
-            return _context.Vendedor.ToList();
+            return _context.Vendedor.OrderBy(x => x.Nome).ToList();
         }
 
         public void Insert(Vendedor obj)
         {
-            obj.Departamento = _context.Departamento.First();
             _context.Add(obj);
             _context.SaveChanges();
         }

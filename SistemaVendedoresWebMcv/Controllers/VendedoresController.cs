@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SistemaVendedoresWebMcv.Models;
+using SistemaVendedoresWebMcv.Models.ViewModels;
 using SistemaVendedoresWebMcv.Services;
 
 namespace SistemaVendedoresWebMcv.Controllers
@@ -7,10 +8,12 @@ namespace SistemaVendedoresWebMcv.Controllers
     public class VendedoresController : Controller
     {
         private readonly VendedorService _vendedorservice;
+        private readonly DepartamentoService _departamentoService;
 
-        public VendedoresController(VendedorService vendedorService)
+        public VendedoresController(VendedorService vendedorService, DepartamentoService departamentoService)
         {
             _vendedorservice = vendedorService;
+            _departamentoService = departamentoService;
         }
         public IActionResult Index()
         {
@@ -20,7 +23,9 @@ namespace SistemaVendedoresWebMcv.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var departamentos = _departamentoService.FindAll();
+            var viewModel = new VendedorFormViewModel { Departamentos = departamentos};
+            return View(viewModel);
         }
 
         [HttpPost]
